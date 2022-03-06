@@ -30,17 +30,17 @@ app.get("/", (req, res) => {
     if (req.user) {
         return res.redirect('/dashboard');
     }
-    res.send(`<a href="http://localhost:3000/auth/google">Login With Google</a>`);
+    res.send(`<a href="/auth/google">Login With Google</a>`);
 })
 
 app.get("/dashboard", auth, (req, res) => {
-    res.json({ user: req.user, logout: `http://localhost:3000/auth/logout` })
+    res.json({ user: req.user, logout: `visit /auth/logout to logout` })
 })
 
 app.use('/auth', authRoutes);
 
-const PORT = process.env.PORT | 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log('Running on %d', PORT)
+    console.log(`Running on ${PORT}`)
 })
 
