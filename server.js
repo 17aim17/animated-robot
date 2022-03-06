@@ -39,7 +39,8 @@ app.get("/dashboard", auth, (req, res) => {
 
 app.use('/auth', authRoutes);
 
-app.listen(3000, () => {
-    console.log('Running on %d', 3000)
+const PORT = process.env.PORT | 3000;
+app.listen(PORT, () => {
+    console.log('Running on %d', PORT)
 })
 
